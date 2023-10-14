@@ -1,0 +1,8 @@
+.items {
+  max-width: 100rem;
+  width: 90%;
+  margin: 120px 30px;
+  animation: meals-appear 1s ease-out forwards;
+  text-align: center;
+  display: flex;
+}
