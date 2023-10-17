@@ -1,19 +1,26 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import { cartActions } from "../Store/cart-slice";
+import CartItem from "./CartItem";
 
 function Cart(props) {
-  const cartItemObj = props.cartItems;
+  const itemsInCart = useSelector((state) => state.cart.cartItems);
 
-  // const cartItems = (
-  //   <ul className={classes["cart-items"]}>
-  //     {cartItemObj.map((item) => (
-  //       <cartItems />
-  //     ))}
-  //   </ul>
-  // );
+  const cartItems = (
+    <ul className={classes["cart-items"]}>
+      {itemsInCart.map((item) => (
+        <CartItem
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          price={item.price}
+          amount={item.quantity}
+        />
+      ))}
+    </ul>
+  );
 
   const dispatch = useDispatch();
 
@@ -23,7 +30,7 @@ function Cart(props) {
 
   return (
     <Modal>
-      {/* {cartItems} */}
+      {cartItems}
       <div className={classes.actions}>
         <button onClick={closeBtnHandler} className={classes.button}>
           Close

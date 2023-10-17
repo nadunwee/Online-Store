@@ -1,11 +1,24 @@
 import { Fragment } from "react";
+import { useDispatch } from "react-redux";
 
 import classes from "./ProductItem.module.css";
+import { cartActions } from "../Store/cart-slice";
 
 function ProductItem(props) {
+  const dispatch = useDispatch();
+
   const price = `$ ${props.price.toFixed(2)}`;
 
-  const addItemHandler = () => {};
+  const addItemHandler = () => {
+    dispatch(
+      cartActions.addToCart({
+        id: props.id,
+        name: props.name,
+        description: props.description,
+        price: props.price,
+      })
+    );
+  };
 
   return (
     <Fragment>
