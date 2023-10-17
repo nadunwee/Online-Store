@@ -17,6 +17,7 @@ function Cart(props) {
           name={item.name}
           price={item.price}
           amount={item.quantity}
+          total={item.totalPrice}
         />
       ))}
     </ul>
