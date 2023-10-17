@@ -5,6 +5,8 @@ import classes from "./ProductItem.module.css";
 function ProductItem(props) {
   const price = `$ ${props.price.toFixed(2)}`;
 
+  const addItemHandler = () => {};
+
   return (
     <Fragment>
       <li className={classes.meal}>
@@ -14,7 +16,9 @@ function ProductItem(props) {
           <div className={classes.price}>{price}</div>
         </div>
       </li>
-      <button className={classes.button}>+ Add</button>
+      <button className={classes.button} onClick={addItemHandler}>
+        + Add
+      </button>
     </Fragment>
   );
 }
