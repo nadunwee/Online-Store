@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
-import { cartActions } from "../Store/cart-slice";
 import CartItem from "./CartItem";
+import { uiActions } from "../Store/ui-slice";
+import Notification from "../UI/Notification";
 
 function Cart(props) {
+  const notification = useSelector((state) => state.ui.notification);
+
   let total = 0;
   const itemsInCart = useSelector((state) => state.cart.cartItems);
-  itemsInCart.forEach((item) => { 
+  itemsInCart.forEach((item) => {
     total += item.totalPrice;
   });
 
@@ -30,11 +33,14 @@ function Cart(props) {
   const dispatch = useDispatch();
 
   const closeBtnHandler = () => {
-    dispatch(cartActions.hideCart());
+    dispatch(uiActions.toggle());
   };
 
   return (
     <Modal>
+      {notification && (
+        <Notification type={notification.type} message={notification.message} />
+      )}
       {cartItems}
       <div className={classes.total}>
         <span>Total amount</span>

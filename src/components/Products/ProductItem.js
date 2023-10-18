@@ -7,14 +7,16 @@ import { cartActions } from "../Store/cart-slice";
 function ProductItem(props) {
   const dispatch = useDispatch();
 
+  const { id, name, description } = props;
+
   const price = `$ ${props.price.toFixed(2)}`;
 
   const addItemHandler = () => {
     dispatch(
       cartActions.addToCart({
-        id: props.id,
-        name: props.name,
-        description: props.description,
+        id,
+        name,
+        description,
         price: props.price,
       })
     );
@@ -25,7 +27,7 @@ function ProductItem(props) {
       <li className={classes.meal}>
         <div>
           <h3>{props.name}</h3>
-          <div className={classes.description}>{props.description}</div>
+          <div className={classes.description}>{description}</div>
           <div className={classes.price}>{price}</div>
         </div>
       </li>
