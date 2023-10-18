@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { uiActions } from "./ui-slice";
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { cartItems: [], totalQuentity: 0 },
+  initialState: { cartItems: [], totalQuentity: 0, changed: false },
   reducers: {
+    replaceCart(state, action) {
+      state.cartItems = action.payload.cartItems;
+      state.totalQuentity = action.payload.totalQuentity;
+    },
     addToCart(state, action) {
       const newItem = action.payload;
 
@@ -27,12 +30,14 @@ const cartSlice = createSlice({
         });
         state.totalQuentity++;
         state.totalPrice += newItem.price;
+        state.changed = true;
       }
     },
     removeFromCart(state, action) {
       const id = action.payload;
 
       const existingItem = state.cartItems.find((item) => item.id === id);
+      state.changed = true;
       if (existingItem.quantity === 1) {
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
         state.totalQuentity--;
@@ -44,51 +49,6 @@ const cartSlice = createSlice({
     },
   },
 });
-
-export const sendCartData = (cart) => {
-  return async (dispatch) => {
-    dispatch(
-      uiActions.showNotification({
-        open: true,
-        message: "Sending Request to FireBase",
-        type: "warning",
-      })
-    );
-
-    const sendRequest = async () => {
-      const res = await fetch(
-        "https://react-redux-d7d46-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(cart),
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("something went wrong");
-      }
-    };
-
-    try {
-      await sendRequest();
-      dispatch(
-        uiActions.showNotification({
-          open: true,
-          message: "Sent the Request",
-          type: "success",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          open: true,
-          message: "Sending Failed",
-          type: "error",
-        })
-      );
-    }
-  };
-};
 
 export const cartActions = cartSlice.actions;
 
