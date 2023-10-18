@@ -6,7 +6,11 @@ import { cartActions } from "../Store/cart-slice";
 import CartItem from "./CartItem";
 
 function Cart(props) {
+  let total = 0;
   const itemsInCart = useSelector((state) => state.cart.cartItems);
+  itemsInCart.forEach((item) => { 
+    total += item.totalPrice;
+  });
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -32,6 +36,10 @@ function Cart(props) {
   return (
     <Modal>
       {cartItems}
+      <div className={classes.total}>
+        <span>Total amount</span>
+        <span>{total}</span>
+      </div>
       <div className={classes.actions}>
         <button onClick={closeBtnHandler} className={classes.button}>
           Close
