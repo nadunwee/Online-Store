@@ -17,7 +17,7 @@ This project is a hands-on exploration of React and Redux, aimed at building a f
 
 - Firebase Integration: We've integrated Firebase to store and manage cart data in real-time. This means that user cart contents are securely saved and accessible even after they leave the site.
 
-    ![DataBase](https://github.com/nadunwee/Online-Store/blob/main/public/DataBase.jpg))
+    ![DataBase](https://github.com/nadunwee/Online-Store/blob/main/public/DataBase.jpg)
 
 - Cart Management: Users can review and modify the items in their cart. Any changes are instantly reflected in the Firebase database and will be visible the next time they access their cart.
 
