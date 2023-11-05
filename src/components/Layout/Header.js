@@ -7,7 +7,7 @@ function Header() {
   return (
     <Fragment>
       <header className={classes.header}>
-        <h1>Redux XXX</h1>
+        <h1>Redux Products</h1>
         <HeaderCartButton />
       </header>
     </Fragment>
