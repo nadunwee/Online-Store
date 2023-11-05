@@ -27,5 +27,4 @@ The project utilizes the following technologies:
 
 - JavaScript: The programming language used for the backend logic.
 - React JS: JavaScript web framework 
-- MySQL: The database management system used to store user information, income, and expenses.
 - FireBase - For database integration.
