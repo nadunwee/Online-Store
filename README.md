@@ -17,7 +17,7 @@ This project is a hands-on exploration of React and Redux, aimed at building a f
 
 - Firebase Integration: We've integrated Firebase to store and manage cart data in real-time. This means that user cart contents are securely saved and accessible even after they leave the site.
 
-    ![login](https://github.com/nadunwee/CashFlow/blob/main/screenshots/login_page.jpg)
+    ![DataBase](https://github.com/nadunwee/Online-Store/blob/main/public/DataBase.jpg))
 
 - Cart Management: Users can review and modify the items in their cart. Any changes are instantly reflected in the Firebase database and will be visible the next time they access their cart.
 
@@ -29,10 +29,3 @@ The project utilizes the following technologies:
 - React JS: JavaScript web framework 
 - MySQL: The database management system used to store user information, income, and expenses.
 - FireBase - For database integration.
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
